@@ -20,6 +20,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
+    <style>
+        .profile-image{
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+
     <title>Sparta Coding Club | Bootstrap Practice</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -50,24 +59,23 @@
                   let profile = articles[i]['profile'];
                   let profile_html = "";
                   if (profile){
-                    profile_html = `<img src="../${profile}" class="profile-image" alt="..."/>`
+                    profile_html = `<span class="circle-image">
+                    <img src="../${profile}" class="profile-image" alt="avatar"/>
+                </span>`
                   }
                   let temp_html = `
             <div class="col-4">
-              <div class="card">
-                <img
-                  src="../${file}"
-                  class="card-img-top"
-                  alt="..."
-                />
-                ${profile_html}
-                  <h5 class="card-title">${title}</h5>
-                  <p class="card-text">${content}</p>
-                  <h6 class="card-subtitle mb-2 text-muted">${time}</h6>
+                <div class="card">
+                    <img src="../${file}" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        ${profile_html}
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${content}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">${time}</h6>
+                    </div>
                 </div>
-              </div>
             </div>
-                    `;
+                        `;
                   $("#cards-box").append(temp_html);
                 }
               },
